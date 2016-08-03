@@ -1,0 +1,37 @@
+{
+  "name": "elm-navigation-example",
+  "version": "0.0.1",
+  "description": "An example how to navigate among routes (URL) using Elm language",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server --host 0.0.0.0 --port 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rodrigo-morais@github.com/rodrigo-morais/elm-navigation-example.git"
+  },
+  "keywords": [
+    "Elm",
+    "Navigation",
+    "Example"
+  ],
+  "author": "Rodrigo Morais <morais.rm@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigo-morais/elm-navigation-example/issues"
+  },
+  "homepage": "https://github.com/rodrigo-morais/elm-navigation-example#readme",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "elm": "^0.17.1",
+    "elm-webpack-loader": "^2.0.1",
+    "file-loader": "^0.8.5",
+    "no-export-loader": "^1.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

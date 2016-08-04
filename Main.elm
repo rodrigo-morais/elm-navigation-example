@@ -28,7 +28,6 @@
 
 import Html exposing (Html, div, text)
 import Html.App
-import Messages exposing (Msg(..))
 
 
 import String
@@ -52,8 +51,8 @@ matchers : Parser (Route -> a) a
 matchers =
   oneOf
     [ format Route1 (s "")
-    , format Route2 (s "/route2")
-    , format Route1 (s "/route1")
+    , format Route2 (s "route2")
+    , format Route1 (s "route1")
     ]
 
 
@@ -67,7 +66,7 @@ matchers =
 hashParser : Navigation.Location -> Result String Route
 hashParser location =
   location.hash
-  |> String.dropLeft 1
+  |> String.dropLeft 2
   |> parse identity matchers
 
 
@@ -120,7 +119,7 @@ initialModel route =
 view : Model -> Html Msg
 view model =
   div []
-      [ text "Main view" ]
+      [ internalPage model ]
 
 
 {--
@@ -171,6 +170,13 @@ urlUpdate result model =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
+
+{--
+  - The Msg which necessary in views and update
+--}
+type Msg
+  = NoOp
 
 
 {--

@@ -36,6 +36,7 @@ import String
 import Routes exposing (..)
 import Models exposing (..)
 import Messages exposing (..)
+import Update exposing (update)
 import Views exposing (view)
 
 
@@ -68,16 +69,6 @@ urlUpdate result model =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
-
-
-{--
-  - The update model is obligatory to call main function
---}
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-  case msg of
-    NoOp ->
-      (model, Cmd.none)
 
 
 {--

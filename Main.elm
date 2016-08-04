@@ -26,7 +26,8 @@
 --}
 
 
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, text, a)
+import Html.Attributes exposing (style, href, id)
 import Html.App
 
 
@@ -119,7 +120,40 @@ initialModel route =
 view : Model -> Html Msg
 view model =
   div []
-      [ internalPage model ]
+      [ menuView
+      , internalPage model
+      ]
+
+
+{--
+  - A navigator to change between Route1 and Route2
+--}
+menuView : Html.Html Msg
+menuView =
+  div [ style [("background-color", "#000000"), ("color", "#FFFFFF")] ]
+      [ div []
+            [ menuLink "route1" "btnRoute1" "Route1"
+            , text " | "
+            , menuLink "route2" "btnRoute2" "Route2"
+            ]
+      ]
+
+
+menuLink : String -> String -> String -> Html.Html Msg
+menuLink href' viewId label =
+  let
+    href'' =
+      if (String.left 3 href') == "/#/" then
+        href'
+      else
+        "/#/" ++ href'
+
+  in
+    a [ id viewId
+      , href href''
+      , style [("text-decoration", "none"), ("color", "#FFFFFF")]
+      ]
+      [ text label ]
 
 
 {--

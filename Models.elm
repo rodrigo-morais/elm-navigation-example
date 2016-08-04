@@ -1,4 +1,6 @@
-modules Models exposing (..)
+module Models exposing (..)
+
+import Routes exposing (Route)
 
 
 {-
@@ -8,4 +10,14 @@ modules Models exposing (..)
 type alias Model =
   { value : Int,
     route: Route
+  }
+
+
+{--
+  - This is the initial model which receives a route and returns a model
+--}
+initialModel : Route -> Model
+initialModel route =
+  { value = 0
+  , route = route
   }

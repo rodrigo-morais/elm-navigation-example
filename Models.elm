@@ -1,6 +1,6 @@
 module Models exposing (..)
 
-import Routes exposing (Route)
+import Routes exposing (..)
 
 
 {-
@@ -19,7 +19,12 @@ type alias Model =
 --}
 initialModel : Route -> Model
 initialModel route =
-  { visitsRoute1 = 1
-  , visitsRoute2 = 0
-  , route = route
-  }
+  let
+    initVisits r =
+      if route == r then 1 else 0
+
+  in
+    { visitsRoute1 = initVisits Route1 
+    , visitsRoute2 = initVisits Route2
+    , route = route
+    }

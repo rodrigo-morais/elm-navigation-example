@@ -8,8 +8,9 @@ import Routes exposing (Route)
   - The model has to store the route
 --}
 type alias Model =
-  { value : Int,
-    route: Route
+  { visitsRoute1 : Int
+  , visitsRoute2 : Int
+  , route: Route
   }
 
 
@@ -18,6 +19,7 @@ type alias Model =
 --}
 initialModel : Route -> Model
 initialModel route =
-  { value = 0
+  { visitsRoute1 = 1
+  , visitsRoute2 = 0
   , route = route
   }

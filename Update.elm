@@ -11,5 +11,8 @@ import Models exposing (Model)
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
-    NoOp ->
-      (model, Cmd.none)
+    IncrementRoute1Visits ->
+      ({ model | visitsRoute1 = model.visitsRoute1 + 1 }, Cmd.none)
+
+    IncrementRoute2Visits ->
+      ({ model | visitsRoute2 = model.visitsRoute2 + 1 }, Cmd.none)

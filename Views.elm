@@ -2,6 +2,7 @@ module Views exposing (..)
 
 
 import Html exposing (Html, div, text, a)
+import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, href, id)
 
 
@@ -34,15 +35,15 @@ menuView =
               ]
       ]
       [ div []
-            [ menuLink "route1" "btnRoute1" "Route1"
+            [ menuLink IncrementRoute1Visits "route1" "btnRoute1" "Route1"
             , text " | "
-            , menuLink "route2" "btnRoute2" "Route2"
+            , menuLink IncrementRoute2Visits "route2" "btnRoute2" "Route2"
             ]
       ]
 
 
-menuLink : String -> String -> String -> Html.Html Msg
-menuLink href' viewId label =
+menuLink : Msg -> String -> String -> String -> Html.Html Msg
+menuLink message href' viewId label =
   let
     href'' =
       if (String.left 3 href') == "/#/" then
@@ -53,6 +54,7 @@ menuLink href' viewId label =
   in
     a [ id viewId
       , href href''
+      , onClick message
       , style [("text-decoration", "none"), ("color", "#FFFFFF")]
       ]
       [ text label ]
@@ -66,11 +68,11 @@ internalPage model =
   case model.route of
     Route1 ->
       div []
-          [ text "This is Route 1" ]
+          [ text ("This is Route 1 - Visits: " ++ (toString model.visitsRoute1))]
 
     Route2 ->
       div []
-          [ text "This is Route 2" ]
+          [ text ("This is Route 2 - Visits: " ++ (toString model.visitsRoute2))]
 
     NotFound ->
       div []
